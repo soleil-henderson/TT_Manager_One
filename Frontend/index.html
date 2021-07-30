@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manager One</title>
+</head>
+<body>
+    
+    <form id="createUser">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" placeholder="username" required>
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="email" required>
+        <button type="submit" id="submit">Create User</button>
+    </form>
+
+    <form id="createTask">
+        <label for="title">Title</label>
+        <input type="text" id="title" name="title" placeholder="title">
+        <label for="description">Description</label>
+        <input type="textarea" id="description" name="description" placeholder="description">
+        <button type="submit" id="submitTask">Create Task</button>
+    </form>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="../Frontend/js/userAjax.js"></script>
+    <script src="../Frontend/js/taskAjax.js"></script>
+    
+    <script>
+
+
+        const getUserById = "http://localhost/TT_Manager_One/Backend/API/UserService/userbyid.php";
+
+        const deleteUserUrl = "http://localhost/TT_Manager_One/Backend/API/UserService/delete.php";
+
+        const createTask = "http://localhost/TT_Manager_One/Backend/API/TasksService/create.php"
+
+/*
+        dataTask = {
+            "user_id" : "8",
+            "title" : "ajax",
+            "description" : "from ajax",
+            "status" : "false"
+        }
+
+// create task
+$('#createTask').on("submit", function(e) {
+    let data = {
+            "user_id" : "8",
+            "title" : $("#title").val(),
+            "description" : $("#description").val(),
+            "status" : false
+        }
+$.ajax({
+    url: createTask,
+    data : JSON.stringify(dataTask),
+    method: 'POST',
+    processData: false,
+    success: function(dataTask) {
+        console.log(dataTask);
+    },
+    error: function(err) {
+        console.log(err);
+    }
+});
+});
+
+
+        /*
+        let userdelete  = {
+            "id": "7"
+        }
+
+        var deleteUSer = JSON.stringify(userdelete)
+
+        $.ajax({
+            url: deleteUserUrl, 
+            data: deleteUSer,
+            method : 'DELETE',
+            processData: false,
+            success: function(data) {
+                console.log(data);
+            },
+            error: function(err) {
+                console.log(err)
+            }
+        });
+        */
+
+        userid = {
+            "id": "1"
+        }
+
+        // get users
+        $.ajax({
+            url: getUserById,        
+            type: 'GET',
+            data: JSON.stringify(userid),
+            success : function(data, status){
+                console.log("DATA: " + data + "\nSTATUS: " + status);
+
+            }
+        })
+
+
+    </script>
+
+</body>
+</html>
